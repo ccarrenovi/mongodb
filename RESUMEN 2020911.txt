@@ -1,0 +1,235 @@
+child process started successfully, parent exiting
+[admin@odiseo ~]$ ps -fea | grep mongo
+admin     6062     1  3 20:34 ?        00:00:03 mongod --dbpath replica01 --port 27020 --logpath replica01/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6116     1  5 20:35 ?        00:00:02 mongod --dbpath replica02 --port 27021 --logpath replica02/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6162     1  7 20:36 ?        00:00:02 mongod --dbpath replica03 --port 27022 --logpath replica03/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6207  3867  0 20:36 pts/1    00:00:00 grep --color=auto mongo
+[admin@odiseo ~]$ ps -fea | grep mongod
+admin     6062     1  3 20:34 ?        00:00:03 mongod --dbpath replica01 --port 27020 --logpath replica01/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6116     1  4 20:35 ?        00:00:02 mongod --dbpath replica02 --port 27021 --logpath replica02/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6162     1  6 20:36 ?        00:00:02 mongod --dbpath replica03 --port 27022 --logpath replica03/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6217  3867  0 20:36 pts/1    00:00:00 grep --color=auto mongod
+[admin@odiseo ~]$ clear
+[admin@odiseo ~]$ ps -fea | grep mongod
+admin     6062     1  3 20:34 ?        00:00:04 mongod --dbpath replica01 --port 27020 --logpath replica01/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6116     1  4 20:35 ?        00:00:03 mongod --dbpath replica02 --port 27021 --logpath replica02/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6162     1  5 20:36 ?        00:00:02 mongod --dbpath replica03 --port 27022 --logpath replica03/log --logappend --fork --bind_ip_all --replSet myreplicaset01
+admin     6220  3867  0 20:36 pts/1    00:00:00 grep --color=auto mongod
+[admin@odiseo ~]$ mongo --port 27020
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27020/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9749e80a-8fbe-4cbe-bbb2-2a10400625e3") }
+MongoDB server version: 4.4.1
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2020-09-11T20:34:51.831-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/defrag is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: Soft rlimits too low
+        2020-09-11T20:34:51.831-04:00:         currentValue: 1024
+        2020-09-11T20:34:51.831-04:00:         recommendedMinimum: 64000
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> rs.initiate();
+{
+        "info2" : "no configuration specified. Using a default configuration for the set",
+        "me" : "odiseo.example.com:27020",
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1599871188, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1599871188, 1)
+}
+myreplicaset01:SECONDARY> exit()
+uncaught exception: ReferenceError: exit is not defined :
+@(shell):1:1
+myreplicaset01:PRIMARY> exit
+bye
+[admin@odiseo ~]$ cat /etc/host
+cat: /etc/host: No such file or directory
+[admin@odiseo ~]$ cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+[admin@odiseo ~]$ hostname
+odiseo.example.com
+[admin@odiseo ~]$ su -
+Password:
+Last login: Fri Sep 11 20:28:59 EDT 2020 on pts/1
+[root@odiseo ~]# vi /etc/hosts
+[root@odiseo ~]# vi /etc/hosts
+[root@odiseo ~]# exit
+logout
+[admin@odiseo ~]$ mongo --port 27020
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27020/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("33cce168-9737-419e-9077-3ca6e3c5e030") }
+MongoDB server version: 4.4.1
+---
+The server generated these startup warnings when booting:
+        2020-09-11T20:34:51.831-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/defrag is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: Soft rlimits too low
+        2020-09-11T20:34:51.831-04:00:         currentValue: 1024
+        2020-09-11T20:34:51.831-04:00:         recommendedMinimum: 64000
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+myreplicaset01:PRIMARY> rs.add("odiseo.example.com:27021");
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1599871426, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1599871426, 1)
+}
+myreplicaset01:PRIMARY> rs.add("odiseo.example.com:27022");
+{
+        "ok" : 1,
+        "$clusterTime" : {
+                "clusterTime" : Timestamp(1599871435, 1),
+                "signature" : {
+                        "hash" : BinData(0,"AAAAAAAAAAAAAAAAAAAAAAAAAAA="),
+                        "keyId" : NumberLong(0)
+                }
+        },
+        "operationTime" : Timestamp(1599871435, 1)
+}
+myreplicaset01:PRIMARY> exit
+bye
+[admin@odiseo ~]$ mongo --port 27021
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27021/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("c6ea8b64-7eba-4751-9ee8-dcba313c4be2") }
+MongoDB server version: 4.4.1
+---
+The server generated these startup warnings when booting:
+        2020-09-11T20:35:40.191-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2020-09-11T20:35:40.191-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:35:40.191-04:00: /sys/kernel/mm/transparent_hugepage/defrag is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:35:40.191-04:00: Soft rlimits too low
+        2020-09-11T20:35:40.191-04:00:         currentValue: 1024
+        2020-09-11T20:35:40.191-04:00:         recommendedMinimum: 64000
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+myreplicaset01:SECONDARY> rs.slaveOk(true);
+WARNING: slaveOk() is deprecated and may be removed in the next major release. Please use secondaryOk() instead.
+myreplicaset01:SECONDARY> secondaryOk();
+uncaught exception: ReferenceError: secondaryOk is not defined :
+@(shell):1:1
+myreplicaset01:SECONDARY> rs.secondaryOk(true);
+myreplicaset01:SECONDARY> exit
+bye
+[admin@odiseo ~]$ mongo --port 27022
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27022/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a2d8eef5-3434-4aac-92b2-6c79ea8506c7") }
+MongoDB server version: 4.4.1
+---
+The server generated these startup warnings when booting:
+        2020-09-11T20:36:04.748-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2020-09-11T20:36:04.748-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:36:04.748-04:00: /sys/kernel/mm/transparent_hugepage/defrag is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:36:04.748-04:00: Soft rlimits too low
+        2020-09-11T20:36:04.748-04:00:         currentValue: 1024
+        2020-09-11T20:36:04.748-04:00:         recommendedMinimum: 64000
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+myreplicaset01:SECONDARY> rs.secondaryOk(true);
+myreplicaset01:SECONDARY> exit
+bye
+[admin@odiseo ~]$ mongo --port 27020
+MongoDB shell version v4.4.1
+connecting to: mongodb://127.0.0.1:27020/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("21388d9e-d25d-4eaa-864e-36978bd85a77") }
+MongoDB server version: 4.4.1
+---
+The server generated these startup warnings when booting:
+        2020-09-11T20:34:51.831-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: /sys/kernel/mm/transparent_hugepage/defrag is 'always'. We suggest setting it to 'never'
+        2020-09-11T20:34:51.831-04:00: Soft rlimits too low
+        2020-09-11T20:34:51.831-04:00:         currentValue: 1024
+        2020-09-11T20:34:51.831-04:00:         recommendedMinimum: 64000
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+myreplicaset01:PRIMARY> use prodmongodb;
+switched to db prodmongodb
+myreplicaset01:PRIMARY> db.employees.insert({name:"Charles",age:20,salary:1000});
+WriteResult({ "nInserted" : 1 })
+myreplicaset01:PRIMARY> db.employees.find();
+{ "_id" : ObjectId("5f5c1a83b3045aee76c198ef"), "name" : "Charles", "age" : 20, "salary" : 1000 }
+myreplicaset01:PRIMARY> db.employees.find().prety();
+uncaught exception: TypeError: db.employees.find(...).prety is not a function :
+@(shell):1:1
+myreplicaset01:PRIMARY> db.employees.find().pretty();
+{
+        "_id" : ObjectId("5f5c1a83b3045aee76c198ef"),
+        "name" : "Charles",
+        "age" : 20,
+        "salary" : 1000
+}
+myreplicaset01:PRIMARY>
